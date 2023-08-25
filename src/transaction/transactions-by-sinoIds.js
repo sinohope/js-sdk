@@ -2,13 +2,13 @@ import { ApiBase } from '../api_base.js';
 import Joi from 'joi';
 import { schemaValidate } from '../schema-validate.js';
 
-export class TransactionsBySinoIds extends ApiBase{
+export class TransactionsBySinoIds extends ApiBase {
     constructor(url, requestKey) {
         super({
             target: '/v1/waas/mpc/transaction/transactions_by_sinoIds',
             method: 'post',
             url,
-            key: requestKey
+            key: requestKey,
         });
         this.validate = schemaValidate(this.scheam());
     }
@@ -20,7 +20,6 @@ export class TransactionsBySinoIds extends ApiBase{
              */
             // @NotNull
             sinoIds: Joi.string().required(),
-
         });
     }
 

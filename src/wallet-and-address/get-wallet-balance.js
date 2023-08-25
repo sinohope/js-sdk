@@ -2,13 +2,13 @@ import { ApiBase } from '../api_base.js';
 import Joi from 'joi';
 import { schemaValidate } from '../schema-validate.js';
 
-export class GetWalletBalance extends ApiBase{
+export class GetWalletBalance extends ApiBase {
     constructor(url, requestKey) {
         super({
             target: '/v1/waas/mpc/wallet/get_wallet_balance',
             method: 'post',
             url,
-            key: requestKey
+            key: requestKey,
         });
         this.validate = schemaValidate(this.scheam());
     }

@@ -2,17 +2,17 @@ import { ApiBase } from '../api_base.js';
 import Joi from 'joi';
 import { schemaValidate } from '../schema-validate.js';
 
-export class TransferAddressBook extends ApiBase{
+export class TransferAddressBook extends ApiBase {
     constructor(url, requestKey) {
         super({
             target: '/v1/waas/mpc/wallet/transfer_address_book',
             method: 'post',
             url,
-            key: requestKey
+            key: requestKey,
         });
         this.validate = schemaValidate(this.scheam());
     }
-  
+
     scheam() {
         return Joi.object({
             /**

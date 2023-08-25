@@ -2,13 +2,13 @@ import { ApiBase } from '../api_base.js';
 import Joi from 'joi';
 import { schemaValidate } from '../schema-validate.js';
 
-export class TransactionsByRequestIds extends ApiBase{
+export class TransactionsByRequestIds extends ApiBase {
     constructor(url, requestKey) {
         super({
             target: '/v1/waas/mpc/transaction/transactions_by_request_ids',
             method: 'post',
             url,
-            key: requestKey
+            key: requestKey,
         });
         this.validate = schemaValidate(this.scheam());
     }
@@ -20,7 +20,6 @@ export class TransactionsByRequestIds extends ApiBase{
              */
             // @NotNull
             requestIds: Joi.string().required(),
-
         });
     }
 

@@ -2,13 +2,13 @@ import { ApiBase } from '../api_base.js';
 import Joi from 'joi';
 import { schemaValidate } from '../schema-validate.js';
 
-export class SpeedupTransaction extends ApiBase{
+export class SpeedupTransaction extends ApiBase {
     constructor(url, requestKey) {
         super({
             target: '/v1/waas/mpc/transaction/speedup_transaction',
             method: 'post',
             url,
-            key: requestKey
+            key: requestKey,
         });
         this.validate = schemaValidate(this.scheam());
     }

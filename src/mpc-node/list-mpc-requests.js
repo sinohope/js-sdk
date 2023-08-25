@@ -2,13 +2,13 @@ import { ApiBase } from '../api_base.js';
 import Joi from 'joi';
 import { schemaValidate } from '../schema-validate.js';
 
-export class ListMpcRequests extends ApiBase{
+export class ListMpcRequests extends ApiBase {
     constructor(url, requestKey) {
         super({
             target: '/v1/waas/mpc/mpcnode/list_mpc_requests',
             method: 'post',
             url,
-            key: requestKey
+            key: requestKey,
         });
         this.validate = schemaValidate(this.scheam());
     }
@@ -34,7 +34,6 @@ export class ListMpcRequests extends ApiBase{
              * 每页数据条数（不得小于1,不得大于50）
              */
             pageSize: Joi.number().default(10).min(1).max(50).required(),
-            
         });
     }
 

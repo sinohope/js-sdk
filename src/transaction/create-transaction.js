@@ -2,13 +2,13 @@ import { ApiBase } from '../api_base.js';
 import Joi from 'joi';
 import { schemaValidate } from '../schema-validate.js';
 
-export class CreateTransaction extends ApiBase{
+export class CreateTransaction extends ApiBase {
     constructor(url, requestKey) {
         super({
             target: '/v1/waas/mpc/transaction/create_transaction',
             method: 'post',
             url,
-            key: requestKey
+            key: requestKey,
         });
         this.validate = schemaValidate(this.scheam());
     }
@@ -78,7 +78,6 @@ export class CreateTransaction extends ApiBase{
             // @NotNull
             gasLimit: Joi.string().required(),
 
-
             /**
              * 备注：用于用户自己需要的一些备注信息
              */
@@ -92,7 +91,6 @@ export class CreateTransaction extends ApiBase{
              * 金库id
              */
             vaultId: Joi.string().optional(),
-            
         });
     }
 

@@ -1,12 +1,7 @@
 import axios from 'axios';
 
 export class ApiBase {
-    constructor({ 
-        url = '', 
-        target = '',
-        method = 'post',
-        key = '',
-    }) {
+    constructor({ url = '', target = '', method = 'post', key = '' }) {
         this._method = method;
         this._url = url;
         this._target = target;

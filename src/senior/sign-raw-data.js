@@ -2,13 +2,13 @@ import { ApiBase } from '../api_base.js';
 import Joi from 'joi';
 import { schemaValidate } from '../schema-validate.js';
 
-export class SignRawData extends ApiBase{
+export class SignRawData extends ApiBase {
     constructor(url, requestKey) {
         super({
             target: '/v1/waas/mpc/wallet/advance/sign_raw_data',
             method: 'post',
             url,
-            key: requestKey
+            key: requestKey,
         });
         this.validate = schemaValidate(this.scheam());
     }
@@ -39,7 +39,6 @@ export class SignRawData extends ApiBase{
             // @NotNull
 
             hdPath: Joi.string().required(),
-            
         });
     }
 
