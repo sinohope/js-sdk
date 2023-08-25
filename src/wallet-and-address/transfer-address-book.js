@@ -2,20 +2,25 @@ import { ApiBase } from '../api_base.js';
 import Joi from 'joi';
 import { schemaValidate } from '../schema-validate.js';
 
-export class ListWallets extends ApiBase{
+export class TransferAddressBook extends ApiBase{
     constructor(url, requestKey) {
         super({
-            target: '/v1/waas/mpc/wallet/list_wallets',
+            target: '/v1/waas/mpc/wallet/transfer_address_book',
             method: 'post',
             url,
             key: requestKey
         });
         this.validate = schemaValidate(this.scheam());
     }
+  
     scheam() {
         return Joi.object({
+            /**
+             * 链名称 简称 链标识 具有唯一性
+             */
+            // @NotNull
+            hainSymbol: Joi.string().required(),
 
-            vaultId: Joi.string().required(),
             /**
              * 当前页码，首页为0,默认0
              */

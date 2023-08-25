@@ -48,7 +48,7 @@ export class ListMpcRequests extends ApiBase{
         if (fixData.pageSize) {
             fixData.pageSize = Number(fixData.pageSize);
         } else {
-            fixData.pageSize = 10;
+            fixData.pageSize = 50;
         }
         this.validate(fixData);
         return fixData;

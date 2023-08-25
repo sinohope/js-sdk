@@ -2,20 +2,24 @@ import { ApiBase } from '../api_base.js';
 import Joi from 'joi';
 import { schemaValidate } from '../schema-validate.js';
 
-export class ListWallets extends ApiBase{
+export class GetWalletBalance extends ApiBase{
     constructor(url, requestKey) {
         super({
-            target: '/v1/waas/mpc/wallet/list_wallets',
+            target: '/v1/waas/mpc/wallet/get_wallet_balance',
             method: 'post',
             url,
             key: requestKey
         });
         this.validate = schemaValidate(this.scheam());
     }
+
     scheam() {
         return Joi.object({
-
-            vaultId: Joi.string().required(),
+            /**
+             * 钱包id
+             */
+            // @NotNull
+            walletId: Joi.string().required(),
             /**
              * 当前页码，首页为0,默认0
              */
