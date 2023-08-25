@@ -1,9 +1,5 @@
 package-lock.json
 /__mocks__/*
-/assets/*
-/config/*
-/thdpkgs/*
 /*/*/dist/*
-/walletdb/*
 node_modules
 !.eslintrc.js

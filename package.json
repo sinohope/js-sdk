@@ -10,6 +10,27 @@
     "publishConfig": {
         "access": "public"
     },
+    "scripts": {
+        "lint": "prettier --ext .js --write {src,test}/** && eslint --ext .js  --fix {src,test}/**",
+        "test": "NODE_OPTIONS=--experimental-vm-modules jest -c jest.config.mjs --runInBand --color=always test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+http://wallet-gitlab-1a-1.aws-jp1.huobiidc.com/local-nodejs/vault/vault-server"
+    },
+    "keywords": [
+        "sinohope",
+        "mpc"
+    ],
+    "devDependencies": {
+        "eslint": "^8.32.0",
+        "eslint-config-prettier": "^8.6.0",
+        "jest": "^29.3.1",
+        "jest-environment-node": "^29.3.1",
+        "lint-staged": "13.0.2",
+        "lodash": "4.17.15",
+        "prettier": "2.6.2"
+    },
     "dependencies": {
         "axios": "1.4.0",
         "joi": "17.6.0",
