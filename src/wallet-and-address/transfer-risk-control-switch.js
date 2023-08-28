@@ -3,12 +3,12 @@ import Joi from 'joi';
 import { schemaValidate } from '../schema-validate.js';
 
 export class TransferRiskControlSwitch extends ApiBase {
-    constructor(url, requestKey) {
+    constructor(url, privateKey) {
         super({
             target: '/v1/waas/mpc/wallet/transfer_risk_control_switch',
             method: 'post',
             url,
-            key: requestKey,
+            key: privateKey,
         });
         this.validate = schemaValidate(this.scheam());
     }
