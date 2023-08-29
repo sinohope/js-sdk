@@ -1,12 +1,13 @@
 import { ApiBase } from '../api_base.js';
 
 export class GetVaults extends ApiBase {
-    constructor(url, requestKey) {
+    constructor(url, privKey, pubKey) {
         super({
             target: '/v1/waas/mpc/wallet/get_vaults',
             method: 'post',
             url,
-            key: requestKey,
+            privKey,
+            pubKey,
         });
     }
 

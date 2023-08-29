@@ -3,12 +3,13 @@ import Joi from 'joi';
 import { schemaValidate } from '../schema-validate.js';
 
 export class TransactionsBySinoIds extends ApiBase {
-    constructor(url, requestKey) {
+    constructor(url, privKey, pubKey) {
         super({
             target: '/v1/waas/mpc/transaction/transactions_by_sinoIds',
             method: 'post',
             url,
-            key: requestKey,
+            privKey,
+            pubKey,
         });
         this.validate = schemaValidate(this.scheam());
     }

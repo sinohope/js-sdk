@@ -1,12 +1,13 @@
 import { ApiBase } from '../api_base.js';
 
 export class Status extends ApiBase {
-    constructor(url, requestKey) {
+    constructor(url, privKey, pubKey) {
         super({
             target: '/v1/waas/mpc/mpcnode/status',
             method: 'post',
             url,
-            key: requestKey,
+            privKey,
+            pubKey,
         });
     }
 

@@ -1,35 +1,71 @@
 import axios from 'axios';
-import { randomBytes, createHash } from 'crypto';
-import secp256r1 from 'secp256r1';
+import {
+    createSign,
+    generateKeyPairSync,
+    createPrivateKey,
+    createPublicKey,
+} from 'crypto';
 
 export class ApiBase {
-    constructor({ url = '', target = '', method = 'post', key = '' }) {
+    constructor({ url = '', target = '', method = 'post', privKey, pubKey }) {
         this._method = method;
         this._url = url;
         this._target = target;
-        this._key = key;
+        this._priv_key = privKey;
+        this._pub_key = pubKey;
+        this._priv_key_hex = privKey;
+        this._pub_key_hex = pubKey;
         this._signData = null;
         this._signTime = null;
-        if (key) {
+        if (privKey && pubKey) {
             this.setKeyPair();
         } else {
             this.genKeyPair();
         }
     }
 
+    setKey(privKey, pubKey) {
+        this._priv_key_hex = privKey;
+        this._pub_key_hex = pubKey;
+        this.setKeyPair();
+    }
+
     setKeyPair() {
-        this._key = Buffer.from(this._key, 'hex');
-        this._publicKey = secp256r1.publicKeyCreate().toString('hex');
+        const privateKey = createPrivateKey({
+            format: 'der',
+            type: 'pkcs8',
+            encoding: 'hex',
+            key: this._priv_key_hex,
+        });
+        this._priv_key = privateKey;
+
+        const publicKey = createPublicKey({
+            format: 'der',
+            type: 'spki',
+            encoding: 'hex',
+            key: this._pub_key_hex,
+        });
+        this._pub_key = publicKey;
     }
 
     genKeyPair() {
-        let privKey;
-        do {
-            privKey = randomBytes(32);
-        } while (!secp256r1.privateKeyVerify(privKey));
-        this._key = privKey;
-        this._publicKey = secp256r1.publicKeyCreate(this._key).toString('hex');
-        console.log(privKey.toString('hex'), this._publicKey);
+        const { privateKey, publicKey } = generateKeyPairSync('ec', {
+            namedCurve: 'prime256v1',
+        });
+        this._priv_key = privateKey;
+        this._pub_key = publicKey;
+        this._priv_key_hex = privateKey
+            .export({
+                format: 'der',
+                type: 'pkcs8',
+            })
+            .toString('hex');
+        this._pub_key_hex = publicKey
+            .export({
+                format: 'der',
+                type: 'spki',
+            })
+            .toString('hex');
     }
 
     setUrl(url) {
@@ -44,11 +80,6 @@ export class ApiBase {
         this._target = target;
     }
 
-    setKey(key) {
-        this._key = key;
-        this.setKeyPair();
-    }
-
     checkParam() {
         throw new Error('must overwite the checkParam fun.');
     }
@@ -57,17 +88,15 @@ export class ApiBase {
         this._signTime = Math.floor(Date.now()).toString();
         const version = '1.0.0';
         const dataStr = JSON.stringify(data);
-        this._signData = `data${dataStr}path${this._target}timestamp${this._signTime}version${version}${this._publicKey}`;
+        this._signData = `data${dataStr}path${this._target}timestamp${this._signTime}version${version}${this._pub_key_hex}`;
     }
 
-    hash(object) {
-        return createHash('sha256')
-            .update(typeof object === 'string' ? object : JSON.stringify(object))
-            .digest('hex');
-    }
     sign(msg) {
-        const sigObj = secp256r1.sign(Buffer.from(this.hash(msg), 'hex'), this._key);
-        return sigObj.signature;
+        const sign = createSign('SHA256');
+        sign.write(msg);
+        sign.end();
+        const signature = sign.sign(this._priv_key, 'hex');
+        return signature;
     }
 
     async _post(data) {
@@ -76,22 +105,23 @@ export class ApiBase {
         const sig = this.sign(this._signData).toString('hex');
         console.log(22222, sig);
         let resp;
-        try{
+        try {
+            console.log(`${this._url}${this._target}`)
             resp = await axios.post(`${this._url}${this._target}`, data, {
                 headers: {
                     'Content-Type': 'application/json',
                     charset: 'utf-8',
-                    'BIZ-API-KEY': this._publicKey,
+                    'BIZ-API-KEY': this._pub_key_hex,
                     'BIZ-API-NONCE': this._signTime,
                     'BIZ-API-SIGNATURE': sig,
                 },
             });
-        }catch(e) {
+        } catch (e) {
             throw new Error(`axios post error. ${e.message}`);
         }
-        
+
         if (resp.status !== 200) {
-            throw Error(
+            throw new Error(
                 `request ${this._url}${this._target} return status ${resp.status}`
             );
         }
