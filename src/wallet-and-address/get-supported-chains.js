@@ -1,4 +1,4 @@
-import { ApiBase } from '../api_base.js';
+import { ApiBase } from '../api-base.js';
 
 export class GetSupportedChains extends ApiBase {
     constructor(url, privKey, pubKey) {

@@ -1,4 +1,4 @@
-import { ApiBase } from '../api_base.js';
+import { ApiBase } from '../api-base.js';
 import Joi from 'joi';
 import { schemaValidate } from '../schema-validate.js';
 
