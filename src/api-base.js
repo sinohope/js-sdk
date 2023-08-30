@@ -1,9 +1,11 @@
 import axios from 'axios';
+import URL from 'url';
 import {
     createSign,
     generateKeyPairSync,
     createPrivateKey,
     createPublicKey,
+    createVerify,
 } from 'crypto';
 
 export class ApiBase {
@@ -22,6 +24,8 @@ export class ApiBase {
         } else {
             this.genKeyPair();
         }
+        const u = URL.parse(`${this._url}${this._target}`);
+        this._path = u.path;
     }
 
     setKey(privKey, pubKey) {
@@ -96,17 +100,30 @@ export class ApiBase {
         sign.write(msg);
         sign.end();
         const signature = sign.sign(this._priv_key, 'hex');
+
+        const verify = createVerify('SHA256');
+        verify.write(msg);
+        verify.end();
+        console.log('verify', verify.verify(this._pub_key, signature, 'hex'));
+
         return signature;
     }
 
     async _post(data) {
         this.generateSignMetaData(data);
-        console.log(22222111, this._signData);
-        const sig = this.sign(this._signData).toString('hex');
-        console.log(22222, sig);
+        console.log('signData', this._signData);
+        const sig = this.sign(this._signData);
+        console.log('sig', sig);
         let resp;
         try {
-            console.log(`${this._url}${this._target}`)
+            console.log(`${this._url}${this._target}`);
+            console.log({ data, headers: {
+                'Content-Type': 'application/json',
+                charset: 'utf-8',
+                'BIZ-API-KEY': this._pub_key_hex,
+                'BIZ-API-NONCE': this._signTime,
+                'BIZ-API-SIGNATURE': sig,
+            } });
             resp = await axios.post(`${this._url}${this._target}`, data, {
                 headers: {
                     'Content-Type': 'application/json',

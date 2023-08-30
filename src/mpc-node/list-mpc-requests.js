@@ -26,7 +26,7 @@ export class ListMpcRequests extends ApiBase {
             /**
              * sinoId,不传按照分页查询
              */
-            sinoId: Joi.string().optional(),
+            sinoId: Joi.string().allow(null).optional(),
             /**
              * 当前页码，首页为0,默认0
              */
