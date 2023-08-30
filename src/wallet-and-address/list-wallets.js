@@ -32,7 +32,7 @@ export class ListWallets extends ApiBase {
         if (fixData.pageIndex) {
             fixData.pageIndex = Number(fixData.pageIndex);
         } else {
-            fixData.pageIndex = 0;
+            fixData.pageIndex = 1;
         }
         if (fixData.pageSize) {
             fixData.pageSize = Number(fixData.pageSize);

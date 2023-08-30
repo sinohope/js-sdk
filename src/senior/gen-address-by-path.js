@@ -16,6 +16,7 @@ export class GenAddressByPath extends ApiBase {
 
     scheam() {
         return Joi.object({
+            vaultId: Joi.string().required(),
             /**
              * 用于区分同一个钱包的同一个cointype 下的不同地址
              */
@@ -39,7 +40,7 @@ export class GenAddressByPath extends ApiBase {
             walletId: Joi.string().required(),
         });
     }
-
+    
     checkParam(data) {
         const fixData = { ...data };
         this.validate(fixData);

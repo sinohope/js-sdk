@@ -15,6 +15,7 @@ export class SignRawData extends ApiBase {
     }
     scheam() {
         return Joi.object({
+            vaultId: Joi.string().required(),
             /**
              * 签名数据
              */
