@@ -29,12 +29,6 @@ export class SignMessage extends ApiBase {
             chainSymbol: Joi.string().required(),
 
             /**
-             * 资产id
-             */
-            // @NotNull
-            assetId: Joi.string().required(),
-
-            /**
              * bip32、bip44的推导路径
              */
             // @NotNull

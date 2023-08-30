@@ -16,6 +16,7 @@ export class ListAddresses extends ApiBase {
 
     scheam() {
         return Joi.object({
+            vaultId: Joi.string().required(),
             /**
              * 钱包id
              */
@@ -29,7 +30,7 @@ export class ListAddresses extends ApiBase {
             /**
              * 当前页码，首页为0,默认0
              */
-            pageIndex: Joi.number().default(0).required(),
+            pageIndex: Joi.number().default(1).required(),
             /***
              * 每页数据条数（不得小于1,不得大于50）
              */

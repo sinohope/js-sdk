@@ -12,7 +12,7 @@
     },
     "scripts": {
         "lint": "prettier --ext .js --write {src,test}/** && eslint --ext .js  --fix {src,test}/**",
-        "test": "NODE_OPTIONS=--experimental-vm-modules jest -c jest.config.mjs --runInBand --color=always test"
+        "test": "NODE_OPTIONS=--experimental-vm-modules jest -c jest.config.mjs --runInBand --color=always"
     },
     "repository": {
         "type": "git",
@@ -33,10 +33,8 @@
     },
     "dependencies": {
         "axios": "1.4.0",
-        "ecdsa-secp256r1": "^1.3.3",
         "elliptic": "^6.5.4",
         "joi": "17.6.0",
-        "lodash": "4.17.21",
-        "secp256r1": "0.0.3"
+        "lodash": "4.17.21"
     }
 }

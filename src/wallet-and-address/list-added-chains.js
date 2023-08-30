@@ -16,6 +16,7 @@ export class ListAddedChains extends ApiBase {
 
     scheam() {
         return Joi.object({
+            vaultId: Joi.string().required(),
             /**
              * 钱包id
              */

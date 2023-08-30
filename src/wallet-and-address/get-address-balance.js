@@ -17,11 +17,6 @@ export class GetAddressBalance extends ApiBase {
     scheam() {
         return Joi.object({
             /**
-             * 链名称 简称 链标识 具有唯一性
-             */
-            chainSymbol: Joi.string().required(),
-
-            /**
              * 币名称 简称 币标识 具有唯一性
              */
             assetId: Joi.string().required(),

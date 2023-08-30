@@ -32,16 +32,16 @@ export class ListTransactions extends ApiBase {
             /**
              * sinoId生成的交易id
              */
-            sinoIds: Joi.string().optional(),
+            sinoIds: Joi.string().allow(null, '').optional(),
             /**
              * 请求方交易的requestId
              */
 
-            requestIds: Joi.string().optional(),
+            requestIds: Joi.string().allow(null, '').optional(),
             /**
              * 交易hash
              */
-            txHash: Joi.string().optional(),
+            txHash: Joi.string().allow(null, '').optional(),
             /**
              * 链标识
              */
@@ -50,19 +50,19 @@ export class ListTransactions extends ApiBase {
             /**
              * 资产id
              */
-            assetId: Joi.string().optional(),
+            assetId: Joi.string().allow(null, '').optional(),
 
             /**
              * 根据更新时间查询,开始时间 传了开始时间,开始结束也得带上
              * 格式 "2022-02-02 00:00:00"
              */
-            startUpdateTime: Joi.string().isoDate().optional(),
+            startUpdateTime: Joi.string().allow(null, '').isoDate().optional(),
 
             /**
              * 根据更新时间查询,结束时间  传了结束时间,开始时间也得带上
              * 格式 "2022-02-02 00:00:00"
              */
-            endUpdateTime: Joi.string().isoDate().optional(),
+            endUpdateTime: Joi.string().allow(null, '').isoDate().optional(),
         });
     }
 

@@ -21,21 +21,22 @@ export class SpeedupTransaction extends ApiBase {
              */
             // @NotNull
             requestId: Joi.string().required(),
+            sinoId: Joi.string().required(),
             /**
              * 交易gasLimit，燃料上限，ETH 账号模型适用
              */
             // @NotNull
-            gasLimi: Joi.string().required(),
+            gasLimi: Joi.string().allow(null, '').optional(),
             /**
              * 交易gasPrice，燃料价格，ETH 账号模型适用，单位为 wei
              */
             // @NotNull
-            gasPrice: Joi.string().required(),
+            gasPrice: Joi.string().allow(null, '').optional(),
             /**
              * 手续费 对于 UTXO 类的非EVM兼容链的交易,自设置fee, 如参数为 UTXO 资产转账提供，表示每字节的手续费
              */
             // @NotNull
-            fee: Joi.string().required(),
+            fee: Joi.string().allow(null, '').optional(),
 
             //    /**
             //     * 加速交易类型 0：普通交易，1：接口加速 1559

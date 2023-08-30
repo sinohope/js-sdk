@@ -5,7 +5,7 @@ import { schemaValidate } from '../schema-validate.js';
 export class TransactionsBySinoIds extends ApiBase {
     constructor(url, privKey, pubKey) {
         super({
-            target: '/v1/waas/mpc/transaction/transactions_by_sinoIds',
+            target: '/v1/waas/mpc/transaction/transactions_by_sino_ids',
             method: 'post',
             url,
             privKey,

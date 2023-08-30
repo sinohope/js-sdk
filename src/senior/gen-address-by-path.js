@@ -40,7 +40,7 @@ export class GenAddressByPath extends ApiBase {
             walletId: Joi.string().required(),
         });
     }
-    
+
     checkParam(data) {
         const fixData = { ...data };
         this.validate(fixData);

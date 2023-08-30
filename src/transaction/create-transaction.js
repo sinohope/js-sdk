@@ -17,10 +17,14 @@ export class CreateTransaction extends ApiBase {
     scheam() {
         return Joi.object({
             /**
+             * 金库id
+             */
+            vaultId: Joi.string().required(),
+            /**
              * 钱包id
              */
             // @Positive
-            walletId: Joi.string().optional(),
+            walletId: Joi.string().required(),
 
             /**
              * 请求方交易的requestId
@@ -53,7 +57,7 @@ export class CreateTransaction extends ApiBase {
             /**
              * 交易的memo
              */
-            toTag: Joi.string().optional(),
+            toTag: Joi.string().allow(null, '').optional(),
 
             /**
              * 金额
@@ -65,33 +69,29 @@ export class CreateTransaction extends ApiBase {
              * 手续费 对于 UTXO 类的非EVM兼容链的交易,自设置fee, 如参数为 UTXO 资产转账提供，表示每字节的手续费
              */
             // @NotNull
-            fee: Joi.string().required(),
+            fee: Joi.string().allow(null, '').optional(),
 
             /**
              * gasprice
              */
             // @NotNull
-            gasPrice: Joi.string().required(),
+            gasPrice: Joi.string().allow(null, '').optional(),
 
             /**
              * gaslimit
              */
             // @NotNull
-            gasLimit: Joi.string().required(),
+            gasLimit: Joi.string().allow(null, '').optional(),
 
             /**
              * 备注：用于用户自己需要的一些备注信息
              */
-            remark: Joi.string().optional(),
+            remark: Joi.string().allow(null, '').optional(),
             /**
              * 以太坊交易data
              */
             // @NotNull
-            inputData: Joi.string().required(),
-            /**
-             * 金库id
-             */
-            vaultId: Joi.string().optional(),
+            inputData: Joi.string().allow(null, '').optional(),
         });
     }
 

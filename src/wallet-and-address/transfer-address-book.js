@@ -16,11 +16,12 @@ export class TransferAddressBook extends ApiBase {
 
     scheam() {
         return Joi.object({
+            vaultId: Joi.string().required(),
             /**
              * 链名称 简称 链标识 具有唯一性
              */
             // @NotNull
-            hainSymbol: Joi.string().required(),
+            chainSymbol: Joi.string().required(),
 
             /**
              * 当前页码，首页为0,默认0

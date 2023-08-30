@@ -16,6 +16,7 @@ export class UpdateWallet extends ApiBase {
 
     scheam() {
         return Joi.object({
+            vaultId: Joi.string().required(),
             /**
              * 钱包id
              * <p> 当指定了以后就是根据钱包开关,否则就是金库级别 <p/>

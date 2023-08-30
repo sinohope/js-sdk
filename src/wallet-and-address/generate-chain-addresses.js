@@ -26,7 +26,7 @@ export class GenerateChainAddresses extends ApiBase {
             /**
              * 创建多少个,不传默认为1
              */
-            count: Joi.number().required(),
+            count: Joi.number().optional(),
             /**
              * 链名称 简称 链标识 具有唯一性
              */

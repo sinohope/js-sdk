@@ -21,6 +21,7 @@ export class CancelTransaction extends ApiBase {
              */
             // @NotNull
             requestId: Joi.string().required(),
+            sinoId: Joi.string().required(),
             /**
              * 链标识
              */
@@ -31,14 +32,6 @@ export class CancelTransaction extends ApiBase {
              */
             // @NotNull
             assetId: Joi.string().required(),
-
-            // @NotNull
-            gasLimit: Joi.string().required(),
-            /**
-             * 交易gasPrice，燃料价格，ETH 账号模型适用，单位为 wei
-             */
-            // @NotNull
-            gasPrice: Joi.string().required(),
         });
     }
 
