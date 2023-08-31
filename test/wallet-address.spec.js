@@ -76,8 +76,8 @@ describe('senior api test', () => {
     it('ListAddedChains success', async () => {
         const api = new ListAddedChains(url, privKey, pubKey);
         const data = await api.request({
-            'vaultId': '450632968208222',
-            'walletId': '413497079388421'
+            vaultId: '450632968208222',
+            walletId: '413497079388421',
         });
         console.log('ListAddedChains:', data);
         expect(data.code).not.toBe(200);
@@ -86,8 +86,9 @@ describe('senior api test', () => {
     it('GetAddressBalance success', async () => {
         const api = new GetAddressBalance(url, privKey, pubKey);
         const data = await api.request({
-            'assetId': 'USDT_ETH',
-            'address': '0x4dac0911bbb5f363e04c425d84a84a98355285fb359ca212701528bf9f4164d4'
+            assetId: 'USDT_ETH',
+            address:
+                '0x4dac0911bbb5f363e04c425d84a84a98355285fb359ca212701528bf9f4164d4',
         });
         console.log('GetAddressBalance:', data);
         expect(data.code).not.toBe(200);
@@ -96,8 +97,8 @@ describe('senior api test', () => {
     it('IsValidAddress success', async () => {
         const api = new IsValidAddress(url, privKey, pubKey);
         const data = await api.request({
-            'assetId': 'USDT_ETH',
-            'address': '0x67d0F791D950CdC25Ac44bA249328022f4df93b6'
+            assetId: 'USDT_ETH',
+            address: '0x67d0F791D950CdC25Ac44bA249328022f4df93b6',
         });
         console.log('IsValidAddress:', data);
         expect(data.code).not.toBe(200);
@@ -106,22 +107,21 @@ describe('senior api test', () => {
     it('TransferAddressBook success', async () => {
         const api = new TransferAddressBook(url, privKey, pubKey);
         const data = await api.request({
-            'vaultId': '450632968208222',
-            'chainSymbol': 'ETH',
-            'pageIndex': 1,
-            'pageSize': 10
+            vaultId: '450632968208222',
+            chainSymbol: 'ETH',
+            pageIndex: 1,
+            pageSize: 10,
         });
         console.log('TransferAddressBook:', data);
         expect(data.code).not.toBe(200);
     });
-    
+
     it('TransferRiskControlSwitch success', async () => {
         const api = new TransferRiskControlSwitch(url, privKey, pubKey);
         const data = await api.request({
-            'vaultId': '450632968208222'
+            vaultId: '450632968208222',
         });
         console.log('TransferRiskControlSwitch:', data);
         expect(data.code).not.toBe(200);
     });
-    
 });

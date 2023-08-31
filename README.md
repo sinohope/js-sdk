@@ -9,7 +9,7 @@ npm i @sinohope/js-sdk
 ## Usage
 
 ```js
-import { ListMpcRequests, Status } from '../index.js';
+import { ListMpcRequests, Status } from '@sinohope/js-sdk';
 
 async function main() {
     const url =
