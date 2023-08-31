@@ -1,4 +1,4 @@
-This project is packed for Sinohope WaaS API. The original version is forked from https://github.com/sinohope/js-sdk
+This project is an JS SDK for Sinohope WaaS API. 
 # @sinohope/js-sdk
 
 ## Installation
@@ -37,4 +37,4 @@ main();
 
 ## LICENSE
 
-This library is free and open-source software released under the MIT license.
+This library is free and open-source software released under the LGPL-3.0 license.
