@@ -107,19 +107,9 @@ export class ApiBase {
 
     async _post(data) {
         this.generateSignMetaData(data);
-        // console.log('signData', this._signData);
         const sig = this.sign(this._signData);
-        // console.log('sig', sig);
         let resp;
         try {
-            // console.log(`${this._url}${this._target}`);
-            // console.log({ data, headers: {
-            //     'Content-Type': 'application/json',
-            //     charset: 'utf-8',
-            //     'BIZ-API-KEY': this._pub_key_hex,
-            //     'BIZ-API-NONCE': this._signTime,
-            //     'BIZ-API-SIGNATURE': sig,
-            // } });
             resp = await axios.post(`${this._url}${this._target}`, data, {
                 headers: {
                     'Content-Type': 'application/json',
