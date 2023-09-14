@@ -1,6 +1,6 @@
 {
     "name": "@sinohope/js-sdk",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "@sinohope public sdk",
     "type": "module",
     "main": "src/index.js",
@@ -10,6 +10,10 @@
     "publishConfig": {
         "access": "public"
     },
+    "files": [
+        "test",
+        "src"
+    ],
     "scripts": {
         "lint": "prettier --ext .js --write {src,test}/** && eslint --ext .js  --fix {src,test}/**",
         "test": "NODE_OPTIONS=--experimental-vm-modules jest -c jest.config.mjs --runInBand --color=always"
