@@ -39,12 +39,6 @@ export class CreateTransaction extends ApiBase {
             chainSymbol: Joi.string().required(),
 
             /**
-             * 资产id
-             */
-            // @NotNull
-            assetId: Joi.string().required(),
-
-            /**
              * from 地址
              */
             // @NotNull
@@ -63,7 +57,7 @@ export class CreateTransaction extends ApiBase {
              * 金额
              */
             // @NotNull
-            amount: Joi.string().required(),
+            amount: Joi.string().allow(null, '').optional(),
 
             /**
              * 手续费 对于 UTXO 类的非EVM兼容链的交易,自设置fee, 如参数为 UTXO 资产转账提供，表示每字节的手续费
@@ -86,7 +80,7 @@ export class CreateTransaction extends ApiBase {
             /**
              * 备注：用于用户自己需要的一些备注信息
              */
-            remark: Joi.string().allow(null, '').optional(),
+            note: Joi.string().allow(null, '').optional(),
             /**
              * 以太坊交易data
              */
