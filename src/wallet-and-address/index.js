@@ -4,7 +4,6 @@ export * from './get-address-balance.js';
 export * from './get-supported-chains.js';
 export * from './get-supported-coins.js';
 export * from './get-vaults.js';
-export * from './get-wallet-balance.js';
 export * from './is-valid-address.js';
 export * from './list-added-chains.js';
 export * from './list-addresses.js';

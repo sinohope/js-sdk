@@ -85,7 +85,7 @@ export class CreateTransfer extends ApiBase {
             /**
              * 备注：用于用户自己需要的一些备注信息
              */
-            remark: Joi.string().allow(null, '').optional(),
+            note: Joi.string().allow(null, '').optional(),
         });
     }
 
