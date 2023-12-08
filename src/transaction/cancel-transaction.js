@@ -31,7 +31,7 @@ export class CancelTransaction extends ApiBase {
              * 资产id
              */
             // @NotNull
-            assetId: Joi.string().required(),
+            // assetId: Joi.string().required(),
         });
     }
 

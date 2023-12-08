@@ -64,7 +64,10 @@ export class CreateTransaction extends ApiBase {
              */
             // @NotNull
             fee: Joi.string().allow(null, '').optional(),
-
+            /**
+             * 手续费费率 1:快 2:中 3:慢
+             */
+            fee_rate: Joi.string().allow(null, '').optional(),
             /**
              * gasprice
              */

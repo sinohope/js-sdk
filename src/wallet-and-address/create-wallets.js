@@ -5,7 +5,7 @@ import { schemaValidate } from '../schema-validate.js';
 export class CreateWallets extends ApiBase {
     constructor(url, privKey, pubKey) {
         super({
-            target: '/v1/waas/mpc/wallet/create_wallets',
+            target: '/v1/waas/mpc/create_wallets',
             method: 'post',
             url,
             privKey,

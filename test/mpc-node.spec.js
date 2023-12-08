@@ -12,8 +12,6 @@ describe('mpc-node api test', () => {
     it('ListMpcRequests success', async () => {
         const api = new ListMpcRequests(url, privKey, pubKey);
         const data = await api.request({
-            // businessExecType: 1,
-            // businessExecStatus: 1,
             sinoId: null,
             pageIndex: 1,
             pageSize: 50,

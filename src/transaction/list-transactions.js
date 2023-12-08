@@ -16,14 +16,7 @@ export class ListTransactions extends ApiBase {
 
     scheam() {
         return Joi.object({
-            /**
-             * 当前页码，首页为0,默认0
-             */
-            pageIndex: Joi.number().default(0).required(),
-            /***
-             * 每页数据条数（不得小于1,不得大于50）
-             */
-            pageSize: Joi.number().default(10).min(1).max(50).required(),
+           
             /**
              * 链地址
              */
@@ -51,7 +44,14 @@ export class ListTransactions extends ApiBase {
              * 资产id
              */
             assetId: Joi.string().allow(null, '').optional(),
-
+            /**
+             * 当前页码，首页为0,默认0
+             */
+            pageIndex: Joi.number().default(0).required(),
+            /***
+              * 每页数据条数（不得小于1,不得大于50）
+              */
+            pageSize: Joi.number().default(10).min(1).max(50).required(),
             /**
              * 根据更新时间查询,开始时间 传了开始时间,开始结束也得带上
              * 格式 "2022-02-02 00:00:00"

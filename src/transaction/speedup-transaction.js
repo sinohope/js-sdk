@@ -23,6 +23,11 @@ export class SpeedupTransaction extends ApiBase {
             requestId: Joi.string().required(),
             sinoId: Joi.string().required(),
             /**
+             * 链标识
+             */
+            // @NotNull
+            chainSymbol: Joi.string().required(),
+            /**
              * 交易gasLimit，燃料上限，ETH 账号模型适用
              */
             // @NotNull
@@ -45,15 +50,10 @@ export class SpeedupTransaction extends ApiBase {
             //    private String speedupType="0";
 
             /**
-             * 链标识
-             */
-            // @NotNull
-            chainSymbol: Joi.string().required(),
-            /**
              * 资产id
              */
             // @NotNull
-            assetId: Joi.string().required(),
+            // assetId: Joi.string().required(),
         });
     }
 

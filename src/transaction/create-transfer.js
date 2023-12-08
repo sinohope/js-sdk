@@ -71,6 +71,10 @@ export class CreateTransfer extends ApiBase {
             fee: Joi.string().allow(null, '').optional(),
 
             /**
+             * 手续费费率 1:快 2:中 3:慢
+             */
+            fee_rate: Joi.string().allow(null, '').optional(),
+            /**
              * 交易gasPrice，燃料价格，ETH 账号模型适用，单位为 wei
              */
             // @NotNull

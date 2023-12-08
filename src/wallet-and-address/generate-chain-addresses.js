@@ -19,6 +19,11 @@ export class GenerateChainAddresses extends ApiBase {
             // @NotNull
             requestId: Joi.string().required(),
             /**
+             * vaultId string required
+             * 金库id
+             */
+            vaultId: Joi.string().required(),
+            /**
              * 钱包id
              */
             // @NotNull

@@ -9,6 +9,8 @@ import {
     TransactionsBySinoIds,
     TransactionsByTxHash,
     SignMessage,
+    Fee,
+
 } from '../src/index.js';
 
 const url =
@@ -148,6 +150,20 @@ describe('transaction api test', () => {
             message: '232313c429aeda8bf786cf092224dddadbc0813f9f230b',
         });
         console.log('SignMessage:', data);
+        expect(data.code).not.toBe(200);
+    });
+    it('Fee success', async () => {
+        const api = new Fee(url, privKey, pubKey);
+        const data = await api.request({
+            operationType: 'CONTRACT_CALL',
+            from: '0xcec96d6b9a0ba75f1dcb882454ad582f273b2842',
+            to: '0x3fc91a3afd70395cd496c647d5a6cc9d4b2b7fad',
+            assetId: 'ETH_GOERLI',
+            chainSymbol: 'GOERLI',
+            amount: '123',
+            inputData: '0xf86407850271d94900825208943fc91a3afd70395cd496c647d5a6cc9d4b2b7fad80802da0a635c2bf652f4eb9980c27544320376759c22ad70b7d67c21adc1fcfd5b11eeca0068a8a2610c3e36940368172d6a80dc7eac3f090e616aec23c27eccaf581e550'
+        });
+        console.log('Fee:', data);
         expect(data.code).not.toBe(200);
     });
 });

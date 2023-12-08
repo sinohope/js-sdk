@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { SignRawData, GenAddressByPath, UpdateWallet } from '../src/index.js';
+import { GenAddressByPath, SignRawData, UpdateWallet } from '../src/index.js';
 
 const url =
     'http://shenyu-bootstrap-c.basic-service.dev3.newhuoapps.com/mpc-uc';

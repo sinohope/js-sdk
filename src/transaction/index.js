@@ -7,3 +7,4 @@ export * from './speedup-transaction.js';
 export * from './transactions-by-request-ids.js';
 export * from './transactions-by-sinoIds.js';
 export * from './transactions-by-tx-hash.js';
+export * from './fee.js';

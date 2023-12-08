@@ -1,12 +1,15 @@
 /* eslint-disable max-len */
 import {
     CreateWallets,
-    ListAddresses,
     GenerateChainAddresses,
-    ListWallets,
-    ListAddedChains,
     GetAddressBalance,
+    GetSupportedChains,
+    GetSupportedCoins,
+    GetVaults,
     IsValidAddress,
+    ListAddedChains,
+    ListAddresses,
+    ListWallets,
     TransferAddressBook,
     TransferRiskControlSwitch,
 } from '../src/index.js';
@@ -122,6 +125,29 @@ describe('senior api test', () => {
             vaultId: '450632968208222',
         });
         console.log('TransferRiskControlSwitch:', data);
+        expect(data.code).not.toBe(200);
+    });
+
+    it('GetSupportedChains success', async () => {
+        const api = new GetSupportedChains(url, privKey, pubKey);
+        const data = await api.request();
+        console.log('GetSupportedChains:', data);
+        expect(data.code).not.toBe(200);
+    });
+
+    it('GetSupportedCoins success', async () => {
+        const api = new GetSupportedCoins(url, privKey, pubKey);
+        const data = await api.request({
+            chainSymbol: 'ETH'
+        });
+        console.log('GetSupportedCoins:', data);
+        expect(data.code).not.toBe(200);
+    });
+
+    it('GetVaults success', async () => {
+        const api = new GetVaults(url, privKey, pubKey);
+        const data = await api.request();
+        console.log('GetVaults:', data);
         expect(data.code).not.toBe(200);
     });
 });

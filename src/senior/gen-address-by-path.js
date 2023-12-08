@@ -18,6 +18,11 @@ export class GenAddressByPath extends ApiBase {
         return Joi.object({
             vaultId: Joi.string().required(),
             /**
+             * 钱包id
+             */
+            // @NotNull
+            walletId: Joi.string().required(),
+            /**
              * 用于区分同一个钱包的同一个cointype 下的不同地址
              */
             // @NotNull
@@ -33,11 +38,6 @@ export class GenAddressByPath extends ApiBase {
              */
             // @NotNull
             coinType: Joi.number().required(),
-            /**
-             * 钱包id
-             */
-            // @NotNull
-            walletId: Joi.string().required(),
         });
     }
 

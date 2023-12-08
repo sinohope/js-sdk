@@ -16,11 +16,7 @@ export class SignRawData extends ApiBase {
     scheam() {
         return Joi.object({
             vaultId: Joi.string().required(),
-            /**
-             * 签名数据
-             */
-            // @NotNull
-            rawData: Joi.string().required(),
+            
             /**
              * 唯一id
              * <p> 用户自己生成的请求唯一id, 用于重试<p/>
@@ -41,6 +37,12 @@ export class SignRawData extends ApiBase {
             // @NotNull
 
             hdPath: Joi.string().required(),
+
+            /**
+             * 签名数据
+             */
+            // @NotNull
+            rawData: Joi.string().required(),
         });
     }
 

@@ -16,10 +16,6 @@ export class GetSupportedCoins extends ApiBase {
     scheam() {
         return Joi.object({
             /**
-             * 部门id
-             */
-            vaultId: Joi.string().required(),
-            /**
              * 链名称 简称 链标识 具有唯一性
              */
             chainSymbol: Joi.string().required(),
