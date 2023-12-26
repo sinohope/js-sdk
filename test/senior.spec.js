@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { GenAddressByPath, SignRawData, UpdateWallet } from '../src/index.js';
+import { GenAddressByPath, SignRawData, UpdateWallet, SignResult } from '../src/index.js';
 
 const url =
     'http://shenyu-bootstrap-c.basic-service.dev3.newhuoapps.com/mpc-uc';
@@ -44,6 +44,16 @@ describe('senior api test', () => {
             advancedEnabled: 1,
         });
         console.log('UpdateWallet:', data);
+        expect(data.code).not.toBe(200);
+    });
+
+    it('SignResult success', async () => {
+        const api = new SignResult(url, privKey, pubKey);
+        const data = await api.request({
+            requestId: '433352715218629',
+            sinoId: '433352715218629',
+        });
+        console.log('SignResult:', data);
         expect(data.code).not.toBe(200);
     });
 });
