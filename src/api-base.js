@@ -88,7 +88,13 @@ export class ApiBase {
     generateSignMetaData(data) {
         this._signTime = Math.floor(Date.now()).toString();
         const version = '1.0.0';
-        const dataStr = JSON.stringify(data);
+        const jsonStr = JSON.stringify(data);
+
+        const dataStr = jsonStr.replaceAll(' ', '');
+        // bugs in other languages
+        // const reg = /\\s*|\n|\r| |\t/g;
+        // dataStr = dataStr.replaceAll(reg, '');
+
         this._signData = `data${dataStr}path${this._target}timestamp${this._signTime}version${version}${this._pub_key_hex}`;
     }
 
