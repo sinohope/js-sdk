@@ -93,7 +93,7 @@ export class ApiBase {
         const dataStr = jsonStr.replaceAll(' ', '');
         // bugs in other languages
         // const reg = /\\s*|\n|\r| |\t/g;
-        // dataStr = dataStr.replaceAll(reg, '');
+        // const dataStr = jsonStr.replaceAll(reg, '');
 
         this._signData = `data${dataStr}path${this._target}timestamp${this._signTime}version${version}${this._pub_key_hex}`;
     }
