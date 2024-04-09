@@ -1,6 +1,6 @@
 {
     "name": "@sinohope/js-sdk",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "@sinohope public sdk",
     "type": "module",
     "main": "src/index.js",
