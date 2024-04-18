@@ -2,10 +2,10 @@ import { ApiBase } from '../api-base.js';
 import Joi from 'joi';
 import { schemaValidate } from '../schema-validate.js';
 
-export class SignResult extends ApiBase {
+export class AddressBalance extends ApiBase {
     constructor(url, privKey, pubKey) {
         super({
-            target: '/v1/waas/mpc/sign_result',
+            target: '/v1/waas/mpc/brc20/address_balance',
             method: 'post',
             url,
             privKey,
@@ -13,18 +13,16 @@ export class SignResult extends ApiBase {
         });
         this.validate = schemaValidate(this.scheam());
     }
+
     scheam() {
         return Joi.object({
-            /**
-             * 选填，与sinoId至少传1个
-             */
+            // chainSymbol string required
+            // 链标识
+            chainSymbol: Joi.string().required(),
 
-            requestId: Joi.string().allow(null, '').optional(),
-            /**
-             * 选填，与requestId至少传1个
-             */
-
-            sinoId: Joi.string().allow(null, '').optional(),
+            // address string required
+            // 查询的地址
+            address: Joi.string().required(),
         });
     }
 

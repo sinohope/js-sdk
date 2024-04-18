@@ -60,6 +60,7 @@ describe('senior api test', () => {
             walletId: '413497079388421',
             count: 1,
             chainSymbol: 'ETH',
+            encoding: 1,
         });
         console.log('GenerateChainAddresses:', data);
         expect(data.code).not.toBe(200);
@@ -138,7 +139,7 @@ describe('senior api test', () => {
     it('GetSupportedCoins success', async () => {
         const api = new GetSupportedCoins(url, privKey, pubKey);
         const data = await api.request({
-            chainSymbol: 'ETH'
+            chainSymbol: 'ETH',
         });
         console.log('GetSupportedCoins:', data);
         expect(data.code).not.toBe(200);

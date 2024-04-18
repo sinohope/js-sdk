@@ -16,7 +16,7 @@ export class SignRawData extends ApiBase {
     scheam() {
         return Joi.object({
             vaultId: Joi.string().required(),
-            
+
             /**
              * 唯一id
              * <p> 用户自己生成的请求唯一id, 用于重试<p/>
@@ -43,6 +43,10 @@ export class SignRawData extends ApiBase {
              */
             // @NotNull
             rawData: Joi.string().required(),
+
+            // 非必填，如果想执行 符合BIP340 标准的 Schnorr 签名 填1，其他情况不填或者填0
+
+            algorithmType: Joi.string().optional(),
         });
     }
 

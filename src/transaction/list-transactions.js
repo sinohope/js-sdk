@@ -16,7 +16,6 @@ export class ListTransactions extends ApiBase {
 
     scheam() {
         return Joi.object({
-           
             /**
              * 链地址
              */
@@ -49,8 +48,8 @@ export class ListTransactions extends ApiBase {
              */
             pageIndex: Joi.number().default(0).required(),
             /***
-              * 每页数据条数（不得小于1,不得大于50）
-              */
+             * 每页数据条数（不得小于1,不得大于50）
+             */
             pageSize: Joi.number().default(10).min(1).max(50).required(),
             /**
              * 根据更新时间查询,开始时间 传了开始时间,开始结束也得带上

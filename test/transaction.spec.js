@@ -10,7 +10,6 @@ import {
     TransactionsByTxHash,
     SignMessage,
     Fee,
-
 } from '../src/index.js';
 
 const url =
@@ -161,7 +160,8 @@ describe('transaction api test', () => {
             assetId: 'ETH_GOERLI',
             chainSymbol: 'GOERLI',
             amount: '123',
-            inputData: '0xf86407850271d94900825208943fc91a3afd70395cd496c647d5a6cc9d4b2b7fad80802da0a635c2bf652f4eb9980c27544320376759c22ad70b7d67c21adc1fcfd5b11eeca0068a8a2610c3e36940368172d6a80dc7eac3f090e616aec23c27eccaf581e550'
+            inputData:
+                '0xf86407850271d94900825208943fc91a3afd70395cd496c647d5a6cc9d4b2b7fad80802da0a635c2bf652f4eb9980c27544320376759c22ad70b7d67c21adc1fcfd5b11eeca0068a8a2610c3e36940368172d6a80dc7eac3f090e616aec23c27eccaf581e550',
         });
         console.log('Fee:', data);
         expect(data.code).not.toBe(200);
