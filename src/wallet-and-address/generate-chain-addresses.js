@@ -37,6 +37,11 @@ export class GenerateChainAddresses extends ApiBase {
              */
             // @NotNull
             chainSymbol: Joi.string().required(),
+
+            /**
+             * btc地址类型 1:LEGACY,2:SEGWIT_NATIVE,3:SEGWIT_NESTED 默认为1:LEGACY
+             */
+            encoding: Joi.number().optional(),
         });
     }
 

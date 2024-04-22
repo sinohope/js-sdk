@@ -1,5 +1,10 @@
 /* eslint-disable max-len */
-import { GenAddressByPath, SignRawData, UpdateWallet, SignResult } from '../src/index.js';
+import {
+    GenAddressByPath,
+    SignRawData,
+    UpdateWallet,
+    SignResult,
+} from '../src/index.js';
 
 const url =
     'http://shenyu-bootstrap-c.basic-service.dev3.newhuoapps.com/mpc-uc';
@@ -18,6 +23,7 @@ describe('senior api test', () => {
             hdPath: 'm/1/1/60/0',
             rawData:
                 '0x4dac0911bbb5f363e04c425d84a84a98355285fb359ca212701528bf9f4164d4',
+            algorithmType: '0',
         });
         console.log('SignRawData:', data);
         expect(data.code).not.toBe(200);
