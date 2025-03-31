@@ -10,6 +10,7 @@ import {
     TransactionsByTxHash,
     SignMessage,
     Fee,
+    SetDelegateEnergy,
 } from '../src/index.js';
 
 const url =
@@ -166,4 +167,16 @@ describe('transaction api test', () => {
         console.log('Fee:', data);
         expect(data.code).not.toBe(200);
     });
+
+    it('Set delegate energy success', async () => {
+        const api = new SetDelegateEnergy(url, privKey, pubKey);
+        const data = await api.request({
+            settlementAddress: 'TUsP8e5wakmWnj7dzVdQZA5mzg9JeDNkzz',
+            chainSymbol: 'TRON',
+            isEnabled: 1,
+        });
+        console.log('SetDelegateEnergy:', data);
+        expect(data.code).not.toBe(200);
+    });
+
 });

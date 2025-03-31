@@ -90,6 +90,16 @@ export class CreateTransfer extends ApiBase {
              * 备注：用于用户自己需要的一些备注信息
              */
             note: Joi.string().allow(null, '').optional(),
+
+            /**
+             * tokenId
+             */
+            tokenId: Joi.string().allow(null, '').optional(),
+
+            /**
+             * utxo选择，0-默认模式，按照金额就近选；1-按照金额从大到小；1-按照金额从小到大
+             */
+            utxoSelector: Joi.string().allow(null, '').optional(),
         });
     }
 
